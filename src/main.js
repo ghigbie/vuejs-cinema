@@ -3,7 +3,16 @@ import './style.scss';
 
 new Vue({
     el: '#app',
-    data: {
-        msg: 'Yo bubba!'
+    components: {
+        'movie-list': {
+            template: `<div id="movie-list">
+                           Movie List
+                       </div>`
+        },
+        'movie-filter': {
+            template: `<div id="movie-filter">
+                           Movie Filter
+                       </div>`
+        }
     }
-})
+});
