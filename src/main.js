@@ -6,8 +6,15 @@ new Vue({
     components: {
         'movie-list': {
             template: `<div id="movie-list">
-                           Movie List
-                       </div>`
+                           <div v-for"movie in movies">{{ movie.title }}</div>
+                       </div>`,
+            data: {
+                movies: [
+                    { title: 'Pulp Fiction' },
+                    { title: 'Home Alone' },
+                    { title: 'Austin Powers' }
+                ]
+            }
         },
         'movie-filter': {
             template: `<div id="movie-filter">
