@@ -26,12 +26,12 @@ new Vue({
                 return {
                     genres //genres is imported from above. 
                 }
-            },
+            }, //the v-on:check-filter below listens for the check-filter event and then calls a second check-filter method
             template: `<div id="movie-filter">
                            <h2>Filter Results</h2>
                            <div class="filter-group">
                                 <check-filter v-for="genre in genres"
-                                              v-on:check-filter="checkFilter"
+                                              v-on:check-filter="checkFilter" 
                                               :title="genre"></check-filter>
                            </div>
                        </div>`,
@@ -58,6 +58,9 @@ new Vue({
                             console.log('last called');
                             this.checked = !this.checked;
                             console.log(this.checked);
+                            this.$emit('check-filter');
+                        },
+                        chekcFilter(){
                             this.$emit('check-filter');
                         }
                     }
