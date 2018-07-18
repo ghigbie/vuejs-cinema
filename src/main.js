@@ -31,9 +31,15 @@ new Vue({
                            <h2>Filter Results</h2>
                            <div class="filter-group">
                                 <check-filter v-for="genre in genres"
+                                              v-on:check-filter="checkFilter"
                                               :title="genre"></check-filter>
                            </div>
                        </div>`,
+            methods: {
+                checkFilter(){
+                    console.log('check filter called');
+                }
+            },
             components: {
                 'check-filter': {
                     data(){
@@ -42,11 +48,19 @@ new Vue({
                         };
                     },
                     props: ['title'],
-                    template: `<div v-bind:class="{'check-filter': true, active: checked}"
-                                    v-on:click="checked = !checked">
+                    template: `<div class="{'check-filter': true, active: checked}"
+                                    @click="checkFilter">
                                     <span class="checkbox"></span>
                                     <span class="check-filter-title">{{ title }}</span>
-                               </div>`
+                               </div>`,
+                    methods: {
+                        checkFilter(){
+                            console.log('last called');
+                            this.checked = !this.checked;
+                            console.log(this.checked);
+                            this.$emit('check-filter');
+                        }
+                    }
                 }
             }
         }, 
