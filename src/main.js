@@ -47,7 +47,7 @@ new Vue({
                             checked: false
                         };
                     },
-                    props: ['title'],
+                    props: ['title'], //any props that are passed down must be registered here
                     template: `<div class="{'check-filter': true, active: checked}"
                                     @click="checkFilter">
                                     <span class="checkbox"></span>
